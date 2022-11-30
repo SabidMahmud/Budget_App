@@ -3,18 +3,24 @@ class Category:
         self.cat_name = category_name
     
     def deposit(self, amount, details = None):
-        self.deposit_amount = amount
+        self.balance = amount
         self.deposit_type = details
     def withdraw(self, amount = 0, details = ''):
         self.withdraw_amount = amount
+        self.balance -= self.withdraw_amount
         self.withdraw_details = details
     
-    def transfer(self, amount, transfer_here):
+    def transfer(self, amount, where):
         self.transfer_amount = amount
-        transfer_here.deposit_amount += self.transfer_amount
+        where.balance += self.transfer_amount
+
     def get_balance(self):
-        return self.deposit_amount - self.withdraw_amount
-        
+        return (self.balance)
+
+    def __sub__(self, other):
+        pass
+    def __add__(self, other):
+        pass  
 
 
 
